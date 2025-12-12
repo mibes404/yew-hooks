@@ -9,7 +9,7 @@ pub struct ButtonProps {
     #[prop_or_default]
     pub button_ref: NodeRef,
     #[prop_or_default]
-    pub children: Children,
+    pub children: Html,
 }
 
 #[function_component]
@@ -20,7 +20,7 @@ pub fn Button(props: &ButtonProps) -> Html {
             onclick={props.onclick.clone()}
             disabled={props.disabled}
             ref={props.button_ref.clone()}>
-            { for props.children.iter() }
+            { props.children.clone() }
         </button>
     }
 }

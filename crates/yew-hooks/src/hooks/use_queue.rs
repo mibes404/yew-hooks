@@ -19,7 +19,7 @@ impl<T> UseQueueHandle<T> {
     /// # Panics
     ///
     /// Panics if the value is currently mutably borrowed
-    pub fn current(&self) -> Ref<VecDeque<T>> {
+    pub fn current(&self) -> Ref<'_, VecDeque<T>> {
         self.inner.borrow()
     }
 
@@ -135,7 +135,7 @@ where
 ///             {
 ///                 for queue.current().iter().map(|v| {
 ///                     html! {
-///                         <p><b>{ v }</b></p>
+///                         <p><b>{ *v }</b></p>
 ///                     }
 ///                 })
 ///             }

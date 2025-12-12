@@ -19,7 +19,7 @@ impl<K, V> UseMapHandle<K, V> {
     /// # Panics
     ///
     /// Panics if the value is currently mutably borrowed
-    pub fn current(&self) -> Ref<HashMap<K, V>> {
+    pub fn current(&self) -> Ref<'_, HashMap<K, V>> {
         self.inner.borrow()
     }
 
@@ -158,7 +158,7 @@ where
 ///             {
 ///                 for map.current().iter().map(|(k, v)| {
 ///                     html! {
-///                         <p><b>{ k }</b> {": "} { v }</p>
+///                         <p><b>{ *k }</b> {": "} { v }</p>
 ///                     }
 ///                 })
 ///             }
